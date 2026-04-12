@@ -1,8 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head><title>Fase 1</title></head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fase 1: Control de Estilo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+        }
+        h1 {
+            color: #0070f3; /* El azul clásico de Vercel */
+            font-size: 3rem;
+        }
+        .status-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
 <body>
-    <h1>Proyecto de Edgardo en Vercel</h1>
-    <p>Desplegado automáticamente desde GitHub.</p>
+    <div class="status-card">
+        <h1>Conexión Exitosa</h1>
+        <p>Edgardo, este cambio se desplegó vía <strong>GitHub → Vercel</strong>.</p>
+    </div>
 </body>
 </html>
