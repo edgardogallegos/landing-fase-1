@@ -42,5 +42,63 @@
             </button>
         </form>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const supabaseUrl = 'https://suzgtbbntvdksyxytlgn.supabase.coQUI';
+  const supabaseKey = 'sb_publishable_QTeQFdT8YNi7L_BNJTRNwA_iPhFkipBQUI';
+  
+  // Usamos un nombre distinto para la instancia para evitar el error de la consola
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+  const formulario = document.querySelector('form');
+
+  formulario.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formulario);
+    const datosEnvio = {
+      nombre: formData.get('nombre'),
+      email: formData.get('email')
+    };
+
+    // Usamos supabaseClient aquí también
+    const { data, error } = await supabaseClient
+      .from('contactos')
+      .insert([datosEnvio]);
+
+    if (error) {
+      alert('Error: ' + error.message);
+    } else {
+      alert('¡Éxito!');
+      formulario.reset();
+    }
+  });
+  // 2. Seleccionamos el formulario del DOM
+  const formulario = document.querySelector('form');
+
+  // 3. Escuchamos cuando el usuario le da a "Enviar"
+  formulario.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Evita que la página se recargue
+
+    // Extraemos los datos del formulario
+    const formData = new FormData(formulario);
+    const datosEnvio = {
+      nombre: formData.get('nombre'),
+      email: formData.get('email')
+    };
+
+    // 4. Enviamos a la tabla 'contactos' de Supabase
+    const { data, error } = await supabase
+      .from('contactos')
+      .insert([datosEnvio]);
+
+    if (error) {
+      alert('Error al enviar: ' + error.message);
+    } else {
+      alert('¡Datos guardados con éxito, Edgardo!');
+      formulario.reset(); // Limpia el formulario
+    }
+  });
+</script>
 </body>
 </html>
